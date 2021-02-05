@@ -1,0 +1,29 @@
+---
+title: "Palmer Penguin Repo"
+author: "Lucy Sean Mary Mudie"
+date: "05/02/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("palmer repro script.R")
+library(tidyverse)
+library(plotly)
+library(palmerpenguins)
+```
+
+
+
+### Figure One
+```{r script for figures, echo=FALSE, message=FALSE}
+penguin_graph<-ggplot(data = penguins,aes(x= bill_length_mm, y= bill_depth_mm)) + geom_point(aes(size= body_mass_g, color= species), alpha= 0.4)+ scale_color_manual(values = c("aquamarine3", "gold", "orchid"))+ theme_minimal()+ labs(x = "Bill Length (mm)", y= "Bill Depth (mm)", title = "Penguin Measurements")
+
+ggplotly(penguin_graph, tooltip = c("species"))
+
+plot(penguin_graph)
+```
+
+
+
+
